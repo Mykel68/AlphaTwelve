@@ -1,4 +1,4 @@
-import { ArrowUp, ArrowDown, ArrowUpRight, ArrowDownRight, Info } from 'lucide-react'
+import { ArrowUpRight, ArrowDownRight, Info } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card" // assuming you are using your own Card component
 
 export default function StatsCard() {

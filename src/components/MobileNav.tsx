@@ -15,7 +15,7 @@ export default function MobileNavigation() {
     const [active, setActive] = useState("Home")
 
     return (
-        <nav className="fixed bottom-0 left-0 right-0 bg-white border-gray-200 py-2 sm:hidden">
+        <nav className="fixed bottom-0 left-0 dark:bg-[#383544] dark:border-t right-0 bg-white border-gray-200 py-2 sm:hidden">
             <ul className="flex justify-around items-center">
                 {navItems.map((item) => (
                     <li key={item.label} className="text-center">
@@ -24,7 +24,7 @@ export default function MobileNavigation() {
                             className={cn(
                                 "flex flex-col items-center p-2  transition-colors",
                                 active === item.label
-                                    ? " border-t-4 border-[#8576FF] text-[#64748B] "
+                                    ? " border-t-4 border-spacing-8 border-[#8576FF] text-[#64748B] "
                                     : "text-gray-600 hover:text-gray-900"
                             )}
                         >

@@ -32,6 +32,12 @@ const events = [
     { name: "Smart Cities Forum", date: "2024-10-18", speaker: "Dr. Maria Hernandez", status: "In Progress" },
     { name: "Tech Safari Mixer", date: "2024-09-30", speaker: "Guest Panel", status: "In Progress" },
 ]
+type Event = {
+    name: string;
+    date: string;
+    speaker: string;
+    status: string;
+};
 
 export default function EventTable() {
     const [currentPage, setCurrentPage] = useState(1)
@@ -43,9 +49,9 @@ export default function EventTable() {
         }))
     }
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [selectedEvent, setSelectedEvent] = useState(null)
+    const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
 
-    const handleRowClick = (eventData: any) => {
+    const handleRowClick = (eventData: Event) => {
         setSelectedEvent(eventData)
         setIsModalOpen(true)
     }

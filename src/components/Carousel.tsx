@@ -30,7 +30,7 @@ const carouselItems = [
 export default function NewsCarousel() {
     const [currentSlide, setCurrentSlide] = useState(0)
     const [isFading, setIsFading] = useState(false)
-    const [isPlaying, setIsPlaying] = useState(true)
+    const isPlaying = true
 
     const handleSlideChange = (newSlide: number) => {
         setIsFading(true) // Trigger fade-out
