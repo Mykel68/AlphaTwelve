@@ -50,7 +50,7 @@ export default function Component() {
     useEffect(() => {
 
         const handleResize = () => {
-            setIsLargeScreen(window.innerWidth >= 1024) // lg breakpoint in Tailwind
+            setIsLargeScreen(window.innerWidth >= 1200) // lg breakpoint in Tailwind
         }
 
         handleResize() // Run on initial render

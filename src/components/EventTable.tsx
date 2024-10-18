@@ -54,8 +54,8 @@ export default function EventTable() {
         <div className="container mx-auto mt-10 md:p-6 bg-transparent">
             <h1 className="text-[1.125rem] font-medium leading-4 mb-6">Events History</h1>
             <div className="flex flex-col space-y-4">
-                <div className="grid md:grid-cols-2">
-                    <div className="flex flex-col md:flex-row  gap-2 ">
+                <div className="grid xl:grid-cols-2 gap-y-2">
+                    <div className="flex flex-col sm:flex-row  gap-2 ">
                         <div className="relative md:mr-2">
                             <Input
                                 type="search"
@@ -107,9 +107,9 @@ export default function EventTable() {
                         </Select>
                         {/* </div> */}
                     </div>
-                    <div className="flex flex-col md:flex-row gap-2 mt-5 md:mt-0 md:gap-0 justify-between items-start md:items-center text-sm ">
+                    <div className="flex flex-col lg:flex-row gap-2 mt-5 md:mt-0 lg:gap-0 justify-between items-start md:items-center text-sm ">
                         <span className="font-semibold text-sm leading-5 text-[#334155] dark:text-white">Displaying 100 results</span>
-                        <div className="grid grid-cols-2 place-content-between md:flex items-center space-y-2 md:space-y-0 md:space-x-2">
+                        <div className="grid grid-cols-2 place-content-between md:flex items-center space-y-2 md:space-y-0 md:space-x-2 w-full">
                             <span className="dark:text-[rgb(252,247,255)]">Sort:</span>
                             <Select>
                                 <SelectTrigger className="w-[115px]">
@@ -130,7 +130,7 @@ export default function EventTable() {
 
                     </div>
                 </div>
-                <Table className="hidden md:table">
+                <Table className="hidden lg:table">
                     <TableHeader className="bg-[#F1F5F9] dark:bg-[#6A6676] dark:hover:bg-[#6A6676] h-[3rem] ">
                         <TableRow>
                             <TableHead className="w-[300px]">Event Name</TableHead>
@@ -161,7 +161,7 @@ export default function EventTable() {
                         ))}
                     </TableBody>
                 </Table>
-                <div className="w-full md:hidden">
+                <div className="w-full lg:hidden">
                     {/* Header */}
                     <div className="flex items-center justify-between bg-[#F1F5F9] dark:bg-[#6A6676] h-[3rem] px-4">
                         <div className="font-semibold text-[#64748B] dark:text-white ">Event Name</div>
@@ -172,17 +172,21 @@ export default function EventTable() {
                     {events.map((event, index) => (
                         <div key={index} className="py-1 dark:border-[#6A6676]">
                             {/* Main Row */}
-                            <div className="flex justify-between items-center h-[3rem] dark:bg-[#484554] px-4" onClick={() => handleRowClick(event)}>
+                            <div className="flex justify-between items-center h-[3rem] dark:bg-[#484554] px-4" >
                                 <div className="flex items-center gap-2 text-xs font-medium">
                                     {expandedRows[index as keyof typeof expandedRows] ? (
-                                        <ChevronDown className="h-4 w-4 cursor-pointer" onClick={() => toggleRow(index)} />
+                                        <ChevronDown className="h-4 w-4 cursor-pointer z-20" onClick={() => toggleRow(index)} />
                                     ) : (
-                                        <ChevronRight className="h-4 w-4 cursor-pointer" onClick={() => toggleRow(index)} />
+                                        <ChevronRight className="h-4 w-4 cursor-pointer z-20" onClick={() => toggleRow(index)} />
                                     )}
-                                    {event.name}
+                                    <span onClick={() => handleRowClick(event)}>
+                                        {event.name}
+                                    </span>
                                 </div>
                                 <div className="flex items-center hover:bg-[#F2F2F7]">
-                                    <div className={`rounded-full flex items-center justify-around w-[82px] h-[20px] relative text-xs leading-4 font-semibold ${event.status === "Completed" ? "bg-green-200 text-green-900 dark:bg-transparent dark:text-green-600 dark:border dark:border-green-600" : "bg-blue-200 text-blue-900 dark:bg-transparent dark:text-blue-600 dark:border dark:border-blue-600"}`}>
+                                    <div className={`rounded-full flex items-center justify-around w-[82px] h-[20px] relative text-xs leading-4 font-semibold ${event.status === "Completed" ? "bg-green-200 text-green-900 dark:bg-transparent dark:text-green-600 dark:border dark:border-green-600" : "bg-blue-200 text-blue-900 dark:bg-transparent dark:text-blue-600 dark:border dark:border-blue-600"}`}
+                                        onClick={() => handleRowClick(event)}
+                                    >
                                         {event.status}
                                     </div>
                                 </div>
